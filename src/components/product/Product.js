@@ -30,7 +30,7 @@ class Product extends React.Children {
   render() {
     return (
       <div>
-        <img src={this.props.ImgSrc} alt={this.props.ImgAlt} />
+        <img src={this.props.imgSrc} alt={this.props.imgAlt} />
         <p>{this.props.companyName}</p>
         <p>{this.props.itemName}</p>
         <div>
