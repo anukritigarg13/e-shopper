@@ -4,16 +4,18 @@ import './Navigation.css';
 
 const Navigation = (props) => (
   <div className="navigation">
+
     <span>E-Shopper</span>
     <span>
       My Basket :
-      {props.cartItems}
+      {props.cartItemsCount}
     </span>
+
   </div>
 );
 
 Navigation.propTypes = {
-  cartItems: PropTypes.number.isRequired,
+  cartItemsCount: PropTypes.number.isRequired,
 };
 
 export default Navigation;

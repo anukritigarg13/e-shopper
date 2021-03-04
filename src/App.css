@@ -8,6 +8,7 @@
 }
 .product-list{
   display:flex;
+  flex-wrap: wrap;
   margin: 2%;
 }
 .product-type{
@@ -18,7 +19,13 @@
     animation: App-logo-spin infinite 20s linear;
   }
 }
-
+@media screen and (max-width:427px){
+  .product-list{
+      display:flex;
+      justify-content: center;
+      flex-wrap: wrap;
+  }
+}
 .App-header {
   background-color: #282c34;
   min-height: 100vh;
