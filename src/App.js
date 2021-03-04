@@ -140,7 +140,6 @@ class App extends React.Component {
           </Route>
           <Route path="/cart">
             <Cart
-              cartItems={this.state.cartItems}
               cartItemsCount={this.state.cartItemsCount}
               products={this.state.products}
             />
