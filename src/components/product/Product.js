@@ -1,50 +1,43 @@
 import React from 'react';
-import QuantityControl from '../quantity-control/QuantityControl';
+import PropTypes from 'prop-types';
+import QuantityControl from '../QuantityControl/QuantityControl';
+import './Product.css';
 
-class Product extends React.Children {
-  constructor(props) {
-    super(props);
-    this.state = {
-      itemCount: 0,
-    };
-  }
+const Product = (props) => (
+  <div className="product">
+    <div className="product-image-div">
+      <img className="product-image" src={props.imgSrc} alt={props.imgAlt} />
+    </div>
 
-  removeItemHandler() {
-    if (this.state.itemCount === 0) {
-      return;
-    }
-    this.setState((prevState) => ({
-      itemCount: prevState.state.itemCount - 1,
-    }));
-  }
+    <p>{props.companyName}</p>
+    <p>{props.itemName}</p>
+    <p>{props.unitQuantity}</p>
+    <div className="quantity-placard">
+      <p>
+        MRP
+        {' '}
+        {props.unitPrice}
+        /-
+      </p>
+      <QuantityControl
+        add={props.add}
+        remove={props.remove}
+        quantity={props.itemCount}
+      />
+    </div>
+  </div>
+);
 
-  addItemHandler() {
-    if (this.state.itemCount === 0) {
-      return;
-    }
-    this.setState((prevState) => ({
-      itemCount: prevState.state.itemCount + 1,
-    }));
-  }
+Product.propTypes = {
+  imgAlt: PropTypes.string.isRequired,
+  imgSrc: PropTypes.string.isRequired,
+  companyName: PropTypes.string.isRequired,
+  itemName: PropTypes.string.isRequired,
+  unitPrice: PropTypes.number.isRequired,
+  unitQuantity: PropTypes.string.isRequired,
+  add: PropTypes.func.isRequired,
+  remove: PropTypes.func.isRequired,
+  itemCount: PropTypes.number.isRequired,
 
-  render() {
-    return (
-      <div>
-        <img src={this.props.imgSrc} alt={this.props.imgAlt} />
-        <p>{this.props.companyName}</p>
-        <p>{this.props.itemName}</p>
-        <div>
-          <p>{this.props.price}</p>
-          <QuantityControl
-            add={this.addItemHandler}
-            remove={this.removeItemHandler}
-            quantity={this.state.itemCount}
-          />
-        </div>
-
-      </div>
-    );
-  }
-}
-
+};
 export default Product;
