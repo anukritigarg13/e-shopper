@@ -1,0 +1,8 @@
+.navigation{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    background-color: rgb(189, 159, 159);
+    color: whitesmoke;
+    padding: 1%;
+}
