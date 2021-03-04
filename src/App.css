@@ -6,7 +6,13 @@
   height: 40vmin;
   pointer-events: none;
 }
-
+.product-list{
+  display:flex;
+  margin: 2%;
+}
+.product-type{
+  margin: 2%;
+}
 @media (prefers-reduced-motion: no-preference) {
   .App-logo {
     animation: App-logo-spin infinite 20s linear;
