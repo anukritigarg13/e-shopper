@@ -1,15 +1,19 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import './Navigation.css';
+import { Link } from 'react-router-dom';
 
 const Navigation = (props) => (
   <div className="navigation">
 
-    <span>E-Shopper</span>
-    <span>
-      My Basket :
-      {props.cartItemsCount}
-    </span>
+    <Link to="/"><span>E-Shopper</span></Link>
+    <Link to="/cart">
+      <span>
+        My Basket :
+        {props.cartItemsCount}
+      </span>
+
+    </Link>
 
   </div>
 );
