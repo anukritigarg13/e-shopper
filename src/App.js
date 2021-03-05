@@ -144,6 +144,9 @@ class App extends React.Component {
               products={this.state.products}
             />
           </Route>
+          <Route path="/checkout">
+            <h1>Happy Shopping</h1>
+          </Route>
 
         </Switch>
 
