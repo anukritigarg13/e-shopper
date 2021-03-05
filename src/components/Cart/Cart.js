@@ -19,7 +19,7 @@ const Cart = (props) => {
 
   ));
   if (props.cartItemsCount === 0) {
-    return 'Your cart is empty';
+    return <div className="cart-item-heading"><h1>Your cart is empty</h1></div>;
   }
   return (
     <div className="cart">
