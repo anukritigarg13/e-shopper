@@ -4,6 +4,7 @@ import { BrowserRouter, Switch, Route } from 'react-router-dom';
 import ProductList from './components/ProductList/ProductList';
 import Navigation from './components/Navigation/Navigation';
 import Cart from './components/Cart/Cart';
+import Checkout from './components/Checkout/Checkout';
 
 class App extends React.Component {
   constructor() {
@@ -62,9 +63,10 @@ class App extends React.Component {
   }
 
   removeItemHandler = (id) => {
+    const { products } = this.state;
     const newProductState = {
       ...this.state,
-      products: this.state.products.map((product) => {
+      products: products.map((product) => {
         if (product.id === id) {
           if (product.itemCount === 0) {
             return product;
@@ -93,9 +95,10 @@ class App extends React.Component {
   }
 
   addItemHandler = (id) => {
+    const { products } = this.state;
     const newProductState = {
       ...this.state,
-      products: this.state.products.map((product) => {
+      products: products.map((product) => {
         if (product.id === id) {
           return {
             ...product,
@@ -121,31 +124,36 @@ class App extends React.Component {
   }
 
   render() {
+    const {
+      cartItemsCount, cartItems, products, addItemHandler, removeItemHandler,
+    } = this.state;
     return (
 
       <BrowserRouter>
-        <Navigation cartItemsCount={this.state.cartItemsCount} />
+        <Navigation cartItemsCount={cartItemsCount} />
         <Switch>
           <Route exact path="/">
             <p className="product-type">Fruits</p>
-            <div className="product-list">
-              <ProductList
-                products={this.state.products}
-                cartItems={this.state.cartItems}
-                add={this.addItemHandler}
-                remove={this.removeItemHandler}
-              />
+            <div className="product-container">
+              <div className="product-list">
+                <ProductList
+                  products={products}
+                  cartItems={cartItems}
+                  add={addItemHandler}
+                  remove={removeItemHandler}
+                />
+              </div>
             </div>
 
           </Route>
           <Route path="/cart">
             <Cart
-              cartItemsCount={this.state.cartItemsCount}
-              products={this.state.products}
+              cartItemsCount={cartItemsCount}
+              products={products}
             />
           </Route>
           <Route path="/checkout">
-            <h1>Happy Shopping</h1>
+            <Checkout />
           </Route>
 
         </Switch>
@@ -155,9 +163,5 @@ class App extends React.Component {
     );
   }
 }
-
-// //function App() {
-//
-// }
 
 export default App;

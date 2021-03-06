@@ -1,9 +1,13 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import './Cart.css';
+import Button from '../Button/Button';
 
 const Cart = (props) => {
-  const itemsInBasket = props.products.map((product) => (
+  const { cartItemsCount, products } = props;
+  const cartTotal = products
+    .reduce((totalPrice, product) => totalPrice + (product.itemCount * product.unitPrice), 0);
+  const itemsInBasket = products.map((product) => (
     <tr>
       <td>
         {product.itemName}
@@ -16,9 +20,9 @@ const Cart = (props) => {
       <td>{product.itemCount}</td>
       <td>{product.unitPrice * product.itemCount}</td>
     </tr>
-
   ));
-  if (props.cartItemsCount === 0) {
+
+  if (cartItemsCount === 0) {
     return <div className="cart-item-heading"><h1>Your cart is empty</h1></div>;
   }
   return (
@@ -27,7 +31,7 @@ const Cart = (props) => {
         <h1>
           Your items in basket:
           {' '}
-          {props.cartItemsCount}
+          {cartItemsCount}
         </h1>
 
       </div>
@@ -43,6 +47,21 @@ const Cart = (props) => {
 
         {itemsInBasket}
       </table>
+      <div className="buttons">
+        <div className="continue-container">
+          <Button className="nav-button" link="/" buttonName="Continue Shopping" />
+        </div>
+
+        <div className="checkout-container">
+          <p>
+            Total Cost:
+            {cartTotal}
+          </p>
+          <Button className="nav-button" link="/checkout" buttonName="Checkout" />
+        </div>
+
+      </div>
+
     </div>
   );
 };

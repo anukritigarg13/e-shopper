@@ -2,9 +2,9 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 
-const Button = (props) => (
+const Button = ({ link, buttonName }) => (
   <div>
-    <Link to={props.link}><button type="button">{props.buttonName}</button></Link>
+    <Link to={link}><button type="button">{buttonName}</button></Link>
   </div>
 );
 Button.propTypes = {

@@ -1,16 +1,16 @@
-/* eslint-disable react/button-has-type */
 import React from 'react';
 import PropTypes from 'prop-types';
+import './QuantityControl.css';
 
-const QuantityControl = (props) => (
-  <div>
-    <button onClick={props.add}>+</button>
+const QuantityControl = ({ add, remove, quantity }) => (
+  <div className="quantity-control">
+    <button className="control-button" onClick={add} type="button">+</button>
     <p>
-      {props.quantity}
+      {quantity}
       {' '}
       in Basket
     </p>
-    <button onClick={props.remove}>-</button>
+    <button className="control-button" onClick={remove} type="button">-</button>
   </div>
 );
 

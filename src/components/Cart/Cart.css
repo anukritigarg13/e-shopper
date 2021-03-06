@@ -4,7 +4,7 @@ td, th {
 }
 thead{
     background-color: grey;
-    color: blanchedalmond;
+    color: black;
 }
 table {
     border-collapse: collapse;
@@ -13,10 +13,23 @@ table {
     margin: 2rem;
 }
 .cart-item-heading{
-    
-    text-align: center;
+    text-align: left;
+    padding: 2rem;
+    border-bottom: 2px 2px 2px black;
 }
 .cart{
     display: flex;
     flex-direction: column;
+}
+.buttons{
+    display: flex;
+    margin: 2rem;
+    justify-content: space-between;
+}
+.nav-button{
+    box-shadow: 5px 5px 5px grey;
+}
+.continue-container{
+    display: flex;
+    align-items: baseline;
 }

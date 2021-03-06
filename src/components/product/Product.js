@@ -3,26 +3,28 @@ import PropTypes from 'prop-types';
 import QuantityControl from '../QuantityControl/QuantityControl';
 import './Product.css';
 
-const Product = (props) => (
+const Product = ({
+  imgSrc, imgAlt, companyName, itemName, itemCount, unitQuantity, unitPrice, add, remove,
+}) => (
   <div className="product">
     <div className="product-image-div">
-      <img className="product-image" src={props.imgSrc} alt={props.imgAlt} />
+      <img className="product-image" src={imgSrc} alt={imgAlt} />
     </div>
 
-    <p>{props.companyName}</p>
-    <p>{props.itemName}</p>
-    <p>{props.unitQuantity}</p>
+    <p>{companyName}</p>
+    <p>{itemName}</p>
+    <p>{unitQuantity}</p>
     <div className="quantity-placard">
       <p>
         MRP
         {' '}
-        {props.unitPrice}
+        {unitPrice}
         /-
       </p>
       <QuantityControl
-        add={props.add}
-        remove={props.remove}
-        quantity={props.itemCount}
+        add={add}
+        remove={remove}
+        quantity={itemCount}
       />
     </div>
   </div>

@@ -8,8 +8,9 @@
 }
 .product-list{
   display:flex;
+  justify-content: space-between;
   flex-wrap: wrap;
-  margin: 2%;
+  margin: 5%;
 }
 .product-type{
   margin: 2%;

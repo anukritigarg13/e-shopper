@@ -1,0 +1,9 @@
+.quantity-control{
+    display: flex;
+    justify-content: space-around;
+    background-color: aquamarine
+}
+.control-button{
+    height: 2rem;
+    width: 2rem;
+}
