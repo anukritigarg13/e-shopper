@@ -10,3 +10,8 @@
 .navigation-links{
     color: blanchedalmond;
 }
+@media screen and (max-width:912px){
+    .navigation{
+        padding: 3% 5%;
+    }
+}

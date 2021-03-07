@@ -1,0 +1,26 @@
+.product-list{
+    display:flex;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+    flex-grow: 1;
+}
+.product-type{
+    margin: 0% 5%;
+}
+.product-container{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin: 2% 5%;
+}
+@media screen and (max-width:912px){
+    .product-list{
+        display:flex;
+        justify-content: center;
+        flex-wrap: wrap;
+    }
+    .product-type{
+      margin: 5% 5%;
+      padding: 0% 5%;
+    }
+}

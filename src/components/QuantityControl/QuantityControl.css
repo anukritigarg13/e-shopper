@@ -1,9 +1,15 @@
 .quantity-control{
     display: flex;
-    justify-content: space-around;
-    background-color: aquamarine
+    justify-content: space-between;
+    background-color: rgb(194 163 76 / 46%);
+    align-items: center;
+    height: 2rem;
+    font-size: 0.75rem;
 }
 .control-button{
     height: 2rem;
     width: 2rem;
+}
+.quantity-in-basket{
+    margin: 0%;
 }

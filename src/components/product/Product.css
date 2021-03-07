@@ -1,15 +1,14 @@
 .product{
-    border: solid thin gray;
     border-radius: 10px;
-    margin: 1%;
-    padding: 10px;
+    margin: 2% 5%;
     text-align: center;
-    width: 20%;
-    box-shadow:10px 10px 5px grey;
+    width: 15%;
+    box-shadow: 1px 5px 5px lightgray;
 }
 .quantity-placard{
-    background-color: rgb(221, 213, 213);
+    background-color: rgb(243, 235, 235);
     padding: 10px;
+    margin: 5%;
 }
 .product-image{
     width: 100%
@@ -23,5 +22,10 @@
 @media screen and (max-width:427px){
     .product{
         width: 80%;
+    }
+}
+@media screen and (max-width:912px) and (min-width:426px){
+    .product{
+        width: 30%;
     }
 }

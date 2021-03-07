@@ -7,7 +7,8 @@ const Cart = (props) => {
   const { cartItemsCount, products } = props;
   const cartTotal = products
     .reduce((totalPrice, product) => totalPrice + (product.itemCount * product.unitPrice), 0);
-  const itemsInBasket = products.map((product) => (
+  const existingProducts = products.filter((product) => product.itemCount > 0);
+  const itemsInBasket = existingProducts.map((product) => (
     <tr>
       <td>
         {product.itemName}
@@ -29,9 +30,10 @@ const Cart = (props) => {
     <div className="cart">
       <div className="cart-item-heading">
         <h1>
-          Your items in basket:
-          {' '}
+          Your basket
+          {'('}
           {cartItemsCount}
+          {' Items)'}
         </h1>
 
       </div>

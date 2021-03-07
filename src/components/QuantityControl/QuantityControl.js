@@ -4,13 +4,14 @@ import './QuantityControl.css';
 
 const QuantityControl = ({ add, remove, quantity }) => (
   <div className="quantity-control">
-    <button className="control-button" onClick={add} type="button">+</button>
-    <p>
+    <p><button className="control-button" onClick={add} type="button">+</button></p>
+    <p className="quantity-in-basket">
       {quantity}
       {' '}
       in Basket
     </p>
-    <button className="control-button" onClick={remove} type="button">-</button>
+    <p><button className="control-button" onClick={remove} type="button">-</button></p>
+
   </div>
 );
 

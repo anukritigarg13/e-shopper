@@ -6,27 +6,14 @@
   height: 40vmin;
   pointer-events: none;
 }
-.product-list{
-  display:flex;
-  justify-content: space-between;
-  flex-wrap: wrap;
-  margin: 5%;
-}
-.product-type{
-  margin: 2%;
-}
+
 @media (prefers-reduced-motion: no-preference) {
   .App-logo {
     animation: App-logo-spin infinite 20s linear;
   }
 }
-@media screen and (max-width:427px){
-  .product-list{
-      display:flex;
-      justify-content: center;
-      flex-wrap: wrap;
-  }
-}
+
+
 .App-header {
   background-color: #282c34;
   min-height: 100vh;
