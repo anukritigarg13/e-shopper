@@ -26,14 +26,17 @@ class Checkout extends React.Component {
     this.setState((prevState) => ({
       ...prevState,
       data: { ...prevState.data, [field]: newValue },
-    }), () => console.log(this.state));
+    }));
   }
 
   onCheckoutHandler = () => {
     const { data } = this.state;
-    const { email } = data;
-    if (!validator.isEmail(email)) {
-      alert('Please enter a valid email');
+    const {
+      email, contactNo, name, address,
+    } = data;
+    if (!validator.isEmail(email)
+     || name.length === 0 || address.length === 0 || !contactNo || contactNo.length < 10) {
+      alert('Please enter valid details');
     }
   }
 
@@ -43,18 +46,23 @@ class Checkout extends React.Component {
       name, address, contactNo, email,
     } = data;
     return (
-      <div>
-        <form>
-          Name :
-          <input type="text" onChange={(event) => this.onChangeHandler(event, 'name')} value={name} />
-          Address:
-          <input type="text" onChange={(event) => this.onChangeHandler(event, 'address')} value={address} />
-          Contact Number:
-          <input type="number" onChange={(event) => this.onChangeHandler(event, 'contactNo')} value={contactNo} />
-          E-mail
-          <input type="text" onChange={(event) => this.onChangeHandler(event, 'email')} value={email} />
-        </form>
-        <button onClick={this.onCheckoutHandler} type="button">Submit</button>
+      <div className="checkout">
+        <div className="form">
+          <form>
+            Name
+            <input type="text" onChange={(event) => this.onChangeHandler(event, 'name')} value={name} />
+            Address
+            <input type="text" onChange={(event) => this.onChangeHandler(event, 'address')} value={address} />
+            Contact Number
+            <input type="number" onChange={(event) => this.onChangeHandler(event, 'contactNo')} value={contactNo} />
+            E-mail
+            <input type="text" onChange={(event) => this.onChangeHandler(event, 'email')} value={email} />
+          </form>
+        </div>
+        <div>
+          <button onClick={this.onCheckoutHandler} type="button">Submit</button>
+        </div>
+
       </div>
 
     );
