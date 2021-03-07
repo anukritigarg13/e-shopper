@@ -1,17 +1,3 @@
-td, th {
-    border: 1px solid #999;
-    padding: 0.5rem;
-}
-thead{
-    background-color: grey;
-    color: black;
-}
-table {
-    border-collapse: collapse;
-    border: azure;
-    box-shadow:5px 5px 5px black;
-    margin: 2rem;
-}
 .cart-item-heading{
     text-align: left;
     padding: 2rem;

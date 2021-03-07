@@ -70,7 +70,7 @@ class App extends React.Component {
 
   render() {
     const {
-      cartItemsCount, products,
+      cartItemsCount, products, allOrders,
     } = this.state;
     return (
 
@@ -95,7 +95,7 @@ class App extends React.Component {
             <Checkout />
           </Route>
           <Route path="/allOrders">
-            <AllOrders />
+            <AllOrders allOrders={allOrders} />
           </Route>
 
         </Switch>
