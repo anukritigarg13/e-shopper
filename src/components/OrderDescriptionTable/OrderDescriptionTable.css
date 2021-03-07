@@ -9,6 +9,7 @@ thead{
 table {
     border-collapse: collapse;
     border: azure;
-    box-shadow:5px 5px 5px black;
+    box-shadow:2px 2px 2px rgb(110, 109, 109);
     margin: 2rem;
+    overflow-x:scroll;
 }

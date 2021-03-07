@@ -16,15 +16,14 @@ const Cart = (props) => {
   return (
     <div className="cart">
       <div className="cart-item-heading">
-        <h1>
-          Your basket
-          {'('}
-          {cartItemsCount}
-          {' Items)'}
-        </h1>
+
+        Your basket
+        {'('}
+        {cartItemsCount}
+        {' Items)'}
 
       </div>
-      <div>
+      <div className="order-table">
         <OrderDescTable products={existingProducts} />
       </div>
       <div className="buttons">
