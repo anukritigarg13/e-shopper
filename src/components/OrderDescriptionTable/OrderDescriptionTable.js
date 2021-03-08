@@ -8,20 +8,19 @@ const OrderDescTable = ({ products }) => {
       itemName, itemCount, unitPrice, unitQuantity, companyName,
     } = product;
     return (
-      <tbody key={product.id}>
-        <tr>
-          <td>
-            {itemName}
-            {' '}
-            {companyName}
-            {' '}
-            {unitQuantity}
-          </td>
-          <td>{unitPrice}</td>
-          <td>{itemCount}</td>
-          <td>{unitPrice * itemCount}</td>
-        </tr>
-      </tbody>
+
+      <tr key={product.id}>
+        <td>
+          {itemName}
+          {' '}
+          {companyName}
+          {' '}
+          {unitQuantity}
+        </td>
+        <td>{unitPrice}</td>
+        <td>{itemCount}</td>
+        <td>{unitPrice * itemCount}</td>
+      </tr>
 
     );
   });
@@ -35,8 +34,9 @@ const OrderDescTable = ({ products }) => {
           <th>SUBTOTAL</th>
         </tr>
       </thead>
-
-      {itemsInBasket}
+      <tbody>
+        {itemsInBasket}
+      </tbody>
     </table>
   );
 };

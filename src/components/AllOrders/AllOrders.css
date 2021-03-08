@@ -1,0 +1,7 @@
+.orders-item-heading{
+    text-align: left;
+    padding: 1rem;
+    border-bottom: solid 2px lightgray;
+    margin: 2rem 5rem;
+    font-size: 2rem;
+}

@@ -1,13 +1,14 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import OrderDescTable from '../OrderDescriptionTable/OrderDescriptionTable';
+import './AllOrdersTable.css';
 
 const AllOrdersTable = ({ order }) => {
   const {
     orderId, orderDetails, amount, items, date, time,
   } = order;
   return (
-    <div>
+    <div className="orders-table">
       <table className="all-orders-table">
         <thead>
           <tr>
@@ -30,7 +31,10 @@ const AllOrdersTable = ({ order }) => {
           </tr>
         </tbody>
       </table>
-      <OrderDescTable products={orderDetails} />
+      <div className="order-desc-table">
+        <OrderDescTable products={orderDetails} />
+      </div>
+
     </div>
   );
 };

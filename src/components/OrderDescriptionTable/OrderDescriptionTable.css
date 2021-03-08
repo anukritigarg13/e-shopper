@@ -1,15 +1,19 @@
 td, th {
-    border: 1px solid #999;
+    text-align: center;
     padding: 0.5rem;
 }
 thead{
-    background-color: grey;
-    color: black;
+    background-color: rgb(88, 87, 87);
+    color: whitesmoke;
+}
+tbody tr:nth-child(odd){
+    background-color: #bfc2c7;
+    color: rgb(12, 12, 12);
 }
 table {
     border-collapse: collapse;
-    border: azure;
-    box-shadow:2px 2px 2px rgb(110, 109, 109);
-    margin: 2rem;
+    border: 1px solid #999;
+    margin: 0rem 5rem;
     overflow-x:scroll;
+    width: 80%;
 }

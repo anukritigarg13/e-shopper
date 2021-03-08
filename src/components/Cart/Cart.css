@@ -1,8 +1,8 @@
 .cart-item-heading{
     text-align: left;
     padding: 1rem;
-    border-style: none none solid none;
-    margin: 2rem;
+    border-bottom: solid 2px lightgray;
+    margin: 2rem 5rem;
     font-size: 2rem;
 }
 .cart{
@@ -11,7 +11,7 @@
 }
 .buttons{
     display: flex;
-    margin: 2rem;
+    margin: 5rem 2rem;
     justify-content: space-between;
     align-items: flex-end;
 }
@@ -31,5 +31,9 @@
     overflow-x:scroll;
 }
 
-
+@media screen and (min-width : 572px){
+    .buttons{
+        padding: 0 5rem;
+    }
+}
    

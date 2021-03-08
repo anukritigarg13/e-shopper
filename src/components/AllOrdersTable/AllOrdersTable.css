@@ -1,0 +1,7 @@
+.orders-table{
+    margin: 5rem 5rem;
+}
+
+.order-desc-table thead{
+    background-color: rgb(27, 140, 160);
+}

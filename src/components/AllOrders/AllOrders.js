@@ -3,9 +3,23 @@ import PropTypes from 'prop-types';
 import AllOrdersTable from '../AllOrdersTable/AllOrdersTable';
 import './AllOrders.css';
 
-const AllOrders = ({ allOrders }) => allOrders.map((order) => (
-  <AllOrdersTable key={order.id} order={order} />
-));
+const AllOrders = ({ allOrders }) => {
+  const orders = allOrders.map((order) => (
+    <AllOrdersTable key={order.id} order={order} />
+
+  ));
+  return (
+    <>
+      <div className="orders-item-heading">
+        All Orders
+        {'('}
+        {2}
+        {' Items)'}
+      </div>
+      {orders}
+    </>
+  );
+};
 const allOrdersShape = {
   orderId: PropTypes.number.isRequired,
   date: PropTypes.string.isRequired,
