@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import AllOrdersTable from '../AllOrdersTable/AllOrdersTable';
-import './AllOrders.css';
+import './AllOrders.scss';
 
 const AllOrders = ({ allOrders }) => {
   const orders = allOrders.map((order) => (

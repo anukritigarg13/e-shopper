@@ -1,0 +1,39 @@
+@import '../styles/index.scss';
+
+.navigation{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    background-color:$primary-background-color;
+    padding: 1% 3%;
+    @include custom-mixin;
+}
+.navigation--dark-mode{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    background-color: whitesmoke;
+    color: rgb(75, 72, 72);
+    padding: 1% 3%;
+}
+.navigation-links--dark-mode{
+    color: rgb(75, 72, 72);
+    margin: 0.5rem;
+    text-decoration: none;
+}
+.navigation-links{  
+    color: whitesmoke;
+    margin: 0.5rem;
+    text-decoration: none;
+}
+.order-nav{
+    display: flex;
+
+}
+@media screen and (max-width:912px){
+    .navigation{
+        padding: 3% 5%;
+    }
+}

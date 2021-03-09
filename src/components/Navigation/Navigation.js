@@ -1,29 +1,37 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import PropTypes from 'prop-types';
-import './Navigation.css';
+import './Navigation.scss';
 import { Link } from 'react-router-dom';
+import NavContext from '../../theme';
 
-const Navigation = ({ cartItemsCount }) => (
-  <div className="navigation">
-    <div><Link to="/" className="navigation-links">E-Shopper</Link></div>
-    <div className="order-nav">
-      <div><Link to="/allOrders" className="navigation-links">All Orders</Link></div>
+const Navigation = ({ cartItemsCount, toggleTheme }) => {
+  const currentTheme = useContext(NavContext);
+  return (
+    <div className={currentTheme === 'light' ? 'navigation' : 'navigation--dark-mode'}>
+      <div><Link to="/" className={currentTheme === 'light' ? 'navigation-links' : 'navigation-links--dark-mode'}>E-Shopper</Link></div>
       <div>
-        <Link to="/cart" className="navigation-links">
-
-          My Basket :
-          {cartItemsCount}
-
-        </Link>
-
+        <button type="button" onClick={toggleTheme}> Change Theme</button>
       </div>
-    </div>
+      <div className="order-nav">
+        <div><Link to="/allOrders" className={currentTheme === 'light' ? 'navigation-links' : 'navigation-links--dark-mode'}>All Orders</Link></div>
+        <div>
+          <Link to="/cart" className={currentTheme === 'light' ? 'navigation-links' : 'navigation-links--dark-mode'}>
 
-  </div>
-);
+            My Basket :
+            {cartItemsCount}
+
+          </Link>
+
+        </div>
+      </div>
+
+    </div>
+  );
+};
 
 Navigation.propTypes = {
   cartItemsCount: PropTypes.number.isRequired,
+  toggleTheme: PropTypes.func.isRequired,
 };
 
 export default Navigation;

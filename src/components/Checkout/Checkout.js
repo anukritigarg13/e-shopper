@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import './Checkout.css';
+import './Checkout.scss';
 import validator from 'validator';
 
 const Checkout = () => {
@@ -7,7 +7,8 @@ const Checkout = () => {
   const [contactNo, setContactNo] = useState(undefined);
   const [email, setEmail] = useState('');
   const [address, setAddress] = useState('');
-
+  const [errorMessage, setErrorMessage] = useState(undefined);
+  const [successMessage, setSuccessMessage] = useState(undefined);
   const onChangeHandler = (event, field) => {
     const newValue = event.target.value;
     if (field === 'contactNo' && newValue.length > 10) {
@@ -33,10 +34,16 @@ const Checkout = () => {
   const onCheckoutHandler = () => {
     if (!validator.isEmail(email)
      || name.length === 0 || address.length === 0 || !contactNo || contactNo.length < 10) {
-      alert('Please enter valid details');
+      setErrorMessage('Please add valid details');
+      setSuccessMessage(undefined);
+      return;
     }
+    setSuccessMessage('Thankyou for shopping with us!');
+    setErrorMessage(undefined);
   };
-
+  let message = '';
+  if (errorMessage) message = errorMessage;
+  else if (successMessage) message = successMessage;
   return (
 
     <div className="checkout">
@@ -55,6 +62,11 @@ const Checkout = () => {
       <div>
         <button onClick={onCheckoutHandler} type="button">Submit</button>
       </div>
+      <div className="checkout-message">
+        <h2>{message}</h2>
+      </div>
+
+      <div />
 
     </div>
 
