@@ -62,4 +62,12 @@ describe('QuantityControl component', () => {
     fireEvent.click(removeElement);
     expect(MOCK_REMOVE).toHaveBeenCalledTimes(1);
   });
+  it('should match snapshot', () => {
+    const { container } = render(<QuantityControl
+      quantity={MOCK_QUANTITY}
+      add={MOCK_ADD}
+      remove={MOCK_REMOVE}
+    />);
+    expect(container).toMatchSnapshot();
+  });
 });

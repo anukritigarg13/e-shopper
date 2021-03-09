@@ -1,0 +1,33 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`QuantityControl component should match snapshot 1`] = `
+<div>
+  <div
+    class="quantity-control"
+  >
+    <p>
+      <button
+        class="control-button"
+        type="button"
+      >
+        +
+      </button>
+    </p>
+    <p
+      class="quantity-in-basket"
+    >
+      5
+       
+      in Basket
+    </p>
+    <p>
+      <button
+        class="control-button"
+        type="button"
+      >
+        -
+      </button>
+    </p>
+  </div>
+</div>
+`;
