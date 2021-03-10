@@ -4,6 +4,7 @@ exports[`QuantityControl component should match snapshot 1`] = `
 <div>
   <div
     class="quantity-control"
+    data-testid="quantity-control"
   >
     <p>
       <button

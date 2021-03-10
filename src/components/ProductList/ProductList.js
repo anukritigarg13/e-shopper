@@ -7,7 +7,7 @@ const ProductList = ({
   products, add, remove, category,
 }) => {
   const requiredCategoryProducts = products.filter((product) => product.category === category);
-  return requiredCategoryProducts.map((product) => (
+  const requiredProducts = requiredCategoryProducts.map((product) => (
     <Product
       key={product.id}
       itemName={product.itemName}
@@ -21,6 +21,14 @@ const ProductList = ({
       remove={() => remove(product.id)}
     />
   ));
+  return (
+    <div className="product-container">
+      <div className="product-type">{category}</div>
+      <div className="product-list">
+        {requiredProducts}
+      </div>
+    </div>
+  );
 };
 const productsShape = {
   id: PropTypes.number.isRequired,

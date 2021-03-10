@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import './QuantityControl.css';
 
 const QuantityControl = ({ add, remove, quantity }) => (
-  <div className="quantity-control">
+  <div className="quantity-control" data-testid="quantity-control">
     <p><button className="control-button" onClick={add} type="button">+</button></p>
     <p className="quantity-in-basket">
       {quantity}

@@ -1,12 +1,13 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import './App.css';
-import { BrowserRouter, Switch, Route } from 'react-router-dom';
+import { Switch, Route } from 'react-router-dom';
+import axios from 'axios';
 import Navigation from './components/Navigation/Navigation';
 import Cart from './components/Cart/Cart';
 import Checkout from './components/Checkout/Checkout';
 import AllOrders from './components/AllOrders/AllOrders';
 import { allOrdersData, productsData } from './resources/data';
-import ProductCategory from './components/ProductCategory/ProductCategory';
+import ProductList from './components/ProductList/ProductList';
 import NavContext from './theme';
 
 const App = () => {
@@ -14,6 +15,23 @@ const App = () => {
   const [cartItemsCount, setCartItemsCount] = useState(0);
   const [allOrders] = useState(allOrdersData);
   const [theme, setTheme] = useState('light');
+  const [isLoaded, setLoaded] = useState('false');
+  const [error, setError] = useState(null);
+
+  useEffect(async () => {
+    try {
+      const { data, axiosError } = await axios.get('/items');
+      if (data) {
+        setLoaded(true);
+      }
+      if (axiosError) {
+        setError(axiosError);
+        setLoaded(true);
+      }
+    } catch (e) {
+      setError(e);
+    }
+  }, []);
   const removeItemHandler = (id) => {
     const newProducts = products.map((product) => {
       if (product.id === id) {
@@ -55,21 +73,26 @@ const App = () => {
       .reduce((cartTotal, product) => cartTotal + product.itemCount, 0);
     setCartItemsCount(newCartItemsCount);
   };
+  if (!isLoaded) {
+    return <div>Your data is loading!</div>;
+  }
+  if (error) {
+    return <div>{error}</div>;
+  }
 
   return (
-
-    <BrowserRouter>
+    <div>
       <NavContext.Provider value={theme}>
         <Navigation cartItemsCount={cartItemsCount} toggleTheme={toggleThemeHandler} />
       </NavContext.Provider>
 
       <Switch>
         <Route exact path="/">
-          <ProductCategory
+          <ProductList
             category="Fruits and Vegetables"
             products={products}
-            addItemHandler={addItemHandler}
-            removeItemHandler={removeItemHandler}
+            add={addItemHandler}
+            remove={removeItemHandler}
           />
         </Route>
         <Route path="/cart">
@@ -87,8 +110,7 @@ const App = () => {
 
       </Switch>
 
-    </BrowserRouter>
-
+    </div>
   );
 };
 

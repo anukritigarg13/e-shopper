@@ -1,22 +1,12 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import ProductList from '../ProductList/ProductList';
-import './ProductCategory.css';
+import './Home.css';
 
-const ProductCategory = ({
+const Home = ({
   category, products, addItemHandler, removeItemHandler,
 }) => (
-  <div className="product-container">
-    <div className="product-type">{category}</div>
-    <div className="product-list">
-      <ProductList
-        category={category}
-        products={products}
-        add={addItemHandler}
-        remove={removeItemHandler}
-      />
-    </div>
-  </div>
+  
 );
 const productsShape = {
   id: PropTypes.number.isRequired,
@@ -29,10 +19,10 @@ const productsShape = {
   itemCount: PropTypes.number.isRequired,
   category: PropTypes.string.isRequired,
 };
-ProductCategory.propTypes = {
+Home.propTypes = {
   category: PropTypes.string.isRequired,
   addItemHandler: PropTypes.func.isRequired,
   removeItemHandler: PropTypes.func.isRequired,
   products: PropTypes.arrayOf(PropTypes.shape(productsShape)).isRequired,
 };
-export default ProductCategory;
+export default Home;
