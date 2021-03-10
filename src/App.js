@@ -4,9 +4,8 @@ import { Switch, Route } from 'react-router-dom';
 import axios from 'axios';
 import Navigation from './components/Navigation/Navigation';
 import Cart from './components/Cart/Cart';
-// import Checkout from './components/Checkout/Checkout';
+import Checkout from './components/Checkout/Checkout';
 import AllOrders from './components/AllOrders/AllOrders';
-//  import { allOrdersData } from './resources/data';
 import NavContext from './theme';
 import Home from './components/Home/Home';
 
@@ -131,7 +130,6 @@ const App = () => {
   if (error) {
     return <div>{error}</div>;
   }
-  console.log(allOrders);
   return (
     <div>
       <NavContext.Provider value={theme}>
@@ -152,9 +150,9 @@ const App = () => {
             products={products}
           />
         </Route>
-        {/* <Route path="/checkout">
-          <Checkout />
-        </Route> */}
+        <Route path="/checkout">
+          <Checkout products={products} />
+        </Route>
         <Route path="/allOrders">
           <AllOrders allOrders={allOrders} />
         </Route>

@@ -1,8 +1,10 @@
 import React, { useState } from 'react';
 import './Checkout.scss';
 import validator from 'validator';
+import PropTypes from 'prop-types';
+import axios from 'axios';
 
-const Checkout = () => {
+const Checkout = ({ products }) => {
   const [name, setName] = useState('');
   const [contactNo, setContactNo] = useState(undefined);
   const [email, setEmail] = useState('');
@@ -31,13 +33,30 @@ const Checkout = () => {
     }
   };
 
-  const onCheckoutHandler = () => {
+  const onCheckoutHandler = async () => {
     if (!validator.isEmail(email)
      || name.length === 0 || address.length === 0 || !contactNo || contactNo.length < 10) {
       setErrorMessage('Please add valid details');
       setSuccessMessage(undefined);
       return;
     }
+    const orderedProducts = Object.keys(products).reduce((accumulator, productCategory) => {
+      const productsInCart = products[productCategory]
+        .filter((product) => product.itemCount > 0).reduce((acc, product) => {
+          const newCount = product.itemCount;
+          const newProduct = { ...product, count: newCount };
+          delete newProduct.itemCount;
+          return acc.concat(newProduct);
+        }, []);
+      if (accumulator.items === undefined) {
+        accumulator.items = [];
+      }
+      accumulator.items = accumulator.items.concat(productsInCart);
+      return accumulator;
+    }, {});
+    console.log(orderedProducts);
+    const response = await axios.post('/orders', orderedProducts);
+    console.log(response);
     setSuccessMessage('Thankyou for shopping with us!');
     setErrorMessage(undefined);
   };
@@ -72,5 +91,15 @@ const Checkout = () => {
 
   );
 };
-
+const productsShape = PropTypes.shape({
+  id: PropTypes.number.isRequired,
+  name: PropTypes.string.isRequired,
+  price: PropTypes.number.isRequired,
+  itemCount: PropTypes.number.isRequired,
+  count: PropTypes.number.isRequired,
+  category: PropTypes.string.isRequired,
+});
+Checkout.propTypes = {
+  products: PropTypes.objectOf(PropTypes.arrayOf(productsShape)).isRequired,
+};
 export default Checkout;
