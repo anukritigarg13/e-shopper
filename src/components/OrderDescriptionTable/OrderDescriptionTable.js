@@ -10,7 +10,6 @@ const OrderDescTable = ({ products }) => {
     }
     return false;
   });
-  console.log(categoriesInCart);
   const itemsInCart = categoriesInCart.map((productCategory) => {
     const categoryItemsInCart = products[productCategory].map((product) => (
       <tr>
