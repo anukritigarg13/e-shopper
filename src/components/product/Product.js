@@ -4,7 +4,8 @@ import QuantityControl from '../QuantityControl/QuantityControl';
 import './Product.css';
 
 const Product = ({
-  imgSrc, imgAlt, companyName, itemName, itemCount, unitQuantity, unitPrice, add, remove,
+  imgSrc, imgAlt, companyName, itemName, itemCount, unitQuantity, unitPrice,
+  add, remove, stock,
 }) => (
   <div className="product" data-testid="product-test">
     <div className="product-image-div">
@@ -16,6 +17,7 @@ const Product = ({
     <p>{unitQuantity}</p>
     <div className="quantity-placard">
       <p>
+        {stock}
         MRP
         {' '}
         {unitPrice}
@@ -40,6 +42,6 @@ Product.propTypes = {
   add: PropTypes.func.isRequired,
   remove: PropTypes.func.isRequired,
   itemCount: PropTypes.number.isRequired,
-
+  stock: PropTypes.number.isRequired,
 };
 export default Product;
