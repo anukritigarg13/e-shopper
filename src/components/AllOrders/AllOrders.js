@@ -5,28 +5,40 @@ import './AllOrders.scss';
 
 const AllOrders = ({ allOrders }) => {
   const orders = allOrders.map((order) => (
-    <AllOrdersTable key={order.id} order={order} />
-
+    <AllOrdersTable
+      key={order.id}
+      order={order.items}
+      date={order.date}
+      id={order.id}
+      totalCost={order.totalCost}
+      totalItems={order.totalItems}
+    />
   ));
   return (
     <>
       <div className="orders-item-heading">
         All Orders
         {'('}
-        {2}
+        {allOrders.length}
         {' Items)'}
       </div>
       {orders}
     </>
   );
 };
+const productsShape = PropTypes.shape({
+  id: PropTypes.number.isRequired,
+  name: PropTypes.string.isRequired,
+  price: PropTypes.number.isRequired,
+  count: PropTypes.number.isRequired,
+  category: PropTypes.string.isRequired,
+});
 const allOrdersShape = {
-  orderId: PropTypes.number.isRequired,
-  date: PropTypes.string.isRequired,
-  amount: PropTypes.number.isRequired,
-  items: PropTypes.number.isRequired,
-  time: PropTypes.string.isRequired,
-
+  items: PropTypes.objectOf(PropTypes.arrayOf(productsShape)).isRequired,
+  date: PropTypes.number.isRequired,
+  id: PropTypes.number.isRequired,
+  totalItems: PropTypes.number.isRequired,
+  totalCost: PropTypes.number.isRequired,
 };
 AllOrders.propTypes = {
   allOrders: PropTypes.arrayOf(PropTypes.shape(allOrdersShape)).isRequired,

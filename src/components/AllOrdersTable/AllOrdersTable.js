@@ -3,10 +3,11 @@ import PropTypes from 'prop-types';
 import OrderDescTable from '../OrderDescriptionTable/OrderDescriptionTable';
 import './AllOrdersTable.css';
 
-const AllOrdersTable = ({ order }) => {
-  const {
-    orderId, orderDetails, amount, items, date, time,
-  } = order;
+const AllOrdersTable = ({
+  id, order, date, totalCost, totalItems,
+}) => {
+  const formattedDate = new Date(date).toDateString();
+  console.log(formattedDate);
   return (
     <div className="orders-table">
       <table className="all-orders-table">
@@ -20,33 +21,34 @@ const AllOrdersTable = ({ order }) => {
         </thead>
         <tbody>
           <tr>
-            <td>{orderId}</td>
-            <td>{items}</td>
+            <td>{id}</td>
+            <td>{totalItems}</td>
             <td>
-              {date}
-              {'\n'}
-              {time}
+              {formattedDate}
             </td>
-            <td>{amount}</td>
+            <td>{totalCost}</td>
           </tr>
         </tbody>
       </table>
       <div className="order-desc-table">
-        <OrderDescTable products={orderDetails} />
+        <OrderDescTable products={order} />
       </div>
 
     </div>
   );
 };
-const ordersShape = {
-  orderId: PropTypes.number.isRequired,
-  date: PropTypes.string.isRequired,
-  amount: PropTypes.number.isRequired,
-  items: PropTypes.number.isRequired,
-  time: PropTypes.string.isRequired,
-
-};
+const productsShape = PropTypes.shape({
+  id: PropTypes.number.isRequired,
+  name: PropTypes.string.isRequired,
+  price: PropTypes.number.isRequired,
+  count: PropTypes.number.isRequired,
+  category: PropTypes.string.isRequired,
+});
 AllOrdersTable.propTypes = {
-  order: PropTypes.shape(ordersShape).isRequired,
+  order: PropTypes.objectOf(PropTypes.arrayOf(productsShape)).isRequired,
+  date: PropTypes.number.isRequired,
+  id: PropTypes.number.isRequired,
+  totalItems: PropTypes.number.isRequired,
+  totalCost: PropTypes.number.isRequired,
 };
 export default AllOrdersTable;

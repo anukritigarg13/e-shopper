@@ -25,7 +25,6 @@ const Product = ({
       <p>{unitQuantity}</p>
       <div className="quantity-placard">
         <p>
-          {stock}
           MRP
           {' '}
           {unitPrice}

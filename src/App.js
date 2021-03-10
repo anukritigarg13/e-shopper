@@ -5,16 +5,15 @@ import axios from 'axios';
 import Navigation from './components/Navigation/Navigation';
 import Cart from './components/Cart/Cart';
 // import Checkout from './components/Checkout/Checkout';
-// import AllOrders from './components/AllOrders/AllOrders';
+import AllOrders from './components/AllOrders/AllOrders';
 //  import { allOrdersData } from './resources/data';
-// import ProductList from './components/ProductList/ProductList';
 import NavContext from './theme';
 import Home from './components/Home/Home';
 
 const App = () => {
   const [products, setProducts] = useState({});
   const [cartItemsCount, setCartItemsCount] = useState(0);
-  // const [allOrders] = useState(allOrdersData);
+  const [allOrders, setOrders] = useState([]);
   const [theme, setTheme] = useState('light');
   const [isLoaded, setLoaded] = useState('false');
   const [error, setError] = useState(null);
@@ -33,6 +32,38 @@ const App = () => {
           return acc;
         }, {});
         setProducts(categorisedProducts);
+        setLoaded(true);
+      }
+      if (axiosError) {
+        setError(axiosError);
+        setLoaded(true);
+      }
+    } catch (e) {
+      setError(e);
+    }
+  }, []);
+
+  useEffect(async () => {
+    try {
+      const { data, axiosError } = await axios.get('/orders');
+      if (data) {
+        const categorisedOrders = data.data.reduce((accumulator, order) => {
+          const categorisedOrderItems = order.items.reduce((acc, product) => {
+            if (acc[product.category] === undefined) {
+              acc[product.category] = [];
+            }
+            const newProduct = { ...product };
+            acc[product.category].push(newProduct);
+            return acc;
+          }, {});
+          const totalCost = order.items
+            .reduce((acc, product) => acc + product.count * product.price, 0);
+          const newOrder = {
+            ...order, items: categorisedOrderItems, totalItems: order.items.length, totalCost,
+          };
+          return accumulator.concat(newOrder);
+        }, []);
+        setOrders(categorisedOrders);
         setLoaded(true);
       }
       if (axiosError) {
@@ -100,7 +131,7 @@ const App = () => {
   if (error) {
     return <div>{error}</div>;
   }
-
+  console.log(allOrders);
   return (
     <div>
       <NavContext.Provider value={theme}>
@@ -123,10 +154,10 @@ const App = () => {
         </Route>
         {/* <Route path="/checkout">
           <Checkout />
-        </Route>
+        </Route> */}
         <Route path="/allOrders">
           <AllOrders allOrders={allOrders} />
-        </Route> */}
+        </Route>
 
       </Switch>
 

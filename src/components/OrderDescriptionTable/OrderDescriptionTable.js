@@ -3,8 +3,14 @@ import PropTypes from 'prop-types';
 import './OrderDescriptionTable.css';
 
 const OrderDescTable = ({ products }) => {
+  console.log(products);
   const categoriesInCart = Object.keys(products).filter((category) => {
-    const categoryExistInCart = products[category].find((product) => product.itemCount > 0);
+    const categoryExistInCart = products[category].find((product) => {
+      if (!product.itemCount) {
+        return true;
+      }
+      return product.itemCount > 0;
+    });
     if (categoryExistInCart) {
       return true;
     }
@@ -15,8 +21,12 @@ const OrderDescTable = ({ products }) => {
       <tr>
         <td>{product.name}</td>
         <td>{product.price}</td>
-        <td>{product.itemCount}</td>
-        <td>{product.itemCount * product.price}</td>
+        <td>{product.itemCount ? product.itemCount : product.count}</td>
+        <td>
+          {product.itemCount
+            ? product.itemCount * product.price : product.count * product.price}
+
+        </td>
       </tr>
     ));
     return (
@@ -26,6 +36,7 @@ const OrderDescTable = ({ products }) => {
       </>
     );
   });
+  console.log('Hello', itemsInCart);
   return (
     <table>
       <thead>
