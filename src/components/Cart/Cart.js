@@ -6,10 +6,19 @@ import OrderDescTable from '../OrderDescriptionTable/OrderDescriptionTable';
 
 const Cart = (props) => {
   const { cartItemsCount, products } = props;
-  const cartTotal = products
-    .reduce((totalPrice, product) => totalPrice + (product.itemCount * product.unitPrice), 0);
-  const existingProducts = products.filter((product) => product.itemCount > 0);
-
+  const cartTotal = Object.keys(products)
+    .reduce((totalPrice, productCategory) => totalPrice + products[productCategory]
+      .reduce((subTotalPrice, product) => subTotalPrice
+      + (product.itemCount * product.price), 0),
+    0);
+  const existingProducts = Object.keys(products)
+    .reduce((acc, category) => {
+      const filteredProductsInCategory = products[category]
+        .filter((product) => product.itemCount > 0);
+      const newAcc = { ...acc, [category]: filteredProductsInCategory };
+      return newAcc;
+    }, {});
+  console.log(existingProducts);
   if (cartItemsCount === 0) {
     return <div className="cart-item-heading"><h1>Your cart is empty</h1></div>;
   }
@@ -42,9 +51,16 @@ const Cart = (props) => {
     </div>
   );
 };
-
+const productsShape = PropTypes.shape({
+  id: PropTypes.number.isRequired,
+  name: PropTypes.string.isRequired,
+  price: PropTypes.number.isRequired,
+  itemCount: PropTypes.number.isRequired,
+  count: PropTypes.number.isRequired,
+  category: PropTypes.string.isRequired,
+});
 Cart.propTypes = {
   cartItemsCount: PropTypes.number.isRequired,
-  products: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
+  products: PropTypes.objectOf(PropTypes.arrayOf(productsShape)).isRequired,
 };
 export default Cart;

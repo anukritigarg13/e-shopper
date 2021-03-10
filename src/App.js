@@ -3,7 +3,7 @@ import './App.css';
 import { Switch, Route } from 'react-router-dom';
 import axios from 'axios';
 import Navigation from './components/Navigation/Navigation';
-// import Cart from './components/Cart/Cart';
+import Cart from './components/Cart/Cart';
 // import Checkout from './components/Checkout/Checkout';
 // import AllOrders from './components/AllOrders/AllOrders';
 //  import { allOrdersData } from './resources/data';
@@ -115,13 +115,13 @@ const App = () => {
             removeItemHandler={removeItemHandler}
           />
         </Route>
-        {/* <Route path="/cart">
+        <Route path="/cart">
           <Cart
             cartItemsCount={cartItemsCount}
             products={products}
           />
         </Route>
-        <Route path="/checkout">
+        {/* <Route path="/checkout">
           <Checkout />
         </Route>
         <Route path="/allOrders">
