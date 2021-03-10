@@ -6,7 +6,13 @@ thead{
     background-color: rgb(88, 87, 87);
     color: whitesmoke;
 }
-tbody tr:nth-child(odd){
+/* tbody tr:nth-child(odd){
+    background-color: #bfc2c7;
+    color: rgb(12, 12, 12);
+} */
+.category-row{
+    padding: 0.5rem;
+    text-align: left;
     background-color: #bfc2c7;
     color: rgb(12, 12, 12);
 }

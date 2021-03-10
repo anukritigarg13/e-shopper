@@ -31,9 +31,15 @@
     .product{
         width: 80%;
     }
+    .out-of-stock{
+        width: 80%;
+    }
 }
 @media screen and (max-width:912px) and (min-width:426px){
     .product{
+        width: 30%;
+    }
+    .out-of-stock{
         width: 30%;
     }
 }
