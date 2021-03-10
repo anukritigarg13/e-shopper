@@ -3,17 +3,18 @@ import './App.css';
 import { Switch, Route } from 'react-router-dom';
 import axios from 'axios';
 import Navigation from './components/Navigation/Navigation';
-import Cart from './components/Cart/Cart';
-import Checkout from './components/Checkout/Checkout';
-import AllOrders from './components/AllOrders/AllOrders';
-import { allOrdersData, productsData } from './resources/data';
-import ProductList from './components/ProductList/ProductList';
+// import Cart from './components/Cart/Cart';
+// import Checkout from './components/Checkout/Checkout';
+// import AllOrders from './components/AllOrders/AllOrders';
+//  import { allOrdersData } from './resources/data';
+// import ProductList from './components/ProductList/ProductList';
 import NavContext from './theme';
+import Home from './components/Home/Home';
 
 const App = () => {
-  const [products, setProducts] = useState(productsData);
+  const [products, setProducts] = useState({});
   const [cartItemsCount, setCartItemsCount] = useState(0);
-  const [allOrders] = useState(allOrdersData);
+  // const [allOrders] = useState(allOrdersData);
   const [theme, setTheme] = useState('light');
   const [isLoaded, setLoaded] = useState('false');
   const [error, setError] = useState(null);
@@ -22,6 +23,16 @@ const App = () => {
     try {
       const { data, axiosError } = await axios.get('/items');
       if (data) {
+        const categorisedProducts = data.data.reduce((acc, product) => {
+          if (acc[product.category] === undefined) {
+            acc[product.category] = [];
+          }
+          const newProduct = { ...product };
+          newProduct.itemCount = 0;
+          acc[product.category].push(newProduct);
+          return acc;
+        }, {});
+        setProducts(categorisedProducts);
         setLoaded(true);
       }
       if (axiosError) {
@@ -32,8 +43,9 @@ const App = () => {
       setError(e);
     }
   }, []);
-  const removeItemHandler = (id) => {
-    const newProducts = products.map((product) => {
+
+  const removeItemHandler = (id, category) => {
+    const newCategoryProducts = products[category].map((product) => {
       if (product.id === id) {
         if (product.itemCount === 0) {
           return product;
@@ -46,9 +58,13 @@ const App = () => {
 
       return product;
     });
+
+    const newProducts = { ...products, [category]: newCategoryProducts };
     setProducts(newProducts);
-    const newCartItemsCount = newProducts
-      .reduce((cartTotal, product) => cartTotal + product.itemCount, 0);
+
+    const newCartItemsCount = Object.keys(newProducts)
+      .reduce((cartTotal, productCategory) => cartTotal + newProducts[productCategory]
+        .reduce((cartSubTotal, product) => cartSubTotal + product.itemCount, 0), 0);
     setCartItemsCount(newCartItemsCount);
   };
   const toggleThemeHandler = () => {
@@ -58,9 +74,12 @@ const App = () => {
     }
     setTheme('light');
   };
-  const addItemHandler = (id) => {
-    const newProducts = products.map((product) => {
+  const addItemHandler = (id, category) => {
+    const newCategoryProducts = products[category].map((product) => {
       if (product.id === id) {
+        if (product.itemCount === product.count) {
+          return product;
+        }
         return {
           ...product,
           itemCount: product.itemCount + 1,
@@ -68,9 +87,11 @@ const App = () => {
       }
       return product;
     });
+    const newProducts = { ...products, [category]: newCategoryProducts };
     setProducts(newProducts);
-    const newCartItemsCount = newProducts
-      .reduce((cartTotal, product) => cartTotal + product.itemCount, 0);
+    const newCartItemsCount = Object.keys(newProducts)
+      .reduce((cartTotal, productCategory) => cartTotal + newProducts[productCategory]
+        .reduce((cartSubTotal, product) => cartSubTotal + product.itemCount, 0), 0);
     setCartItemsCount(newCartItemsCount);
   };
   if (!isLoaded) {
@@ -88,14 +109,13 @@ const App = () => {
 
       <Switch>
         <Route exact path="/">
-          <ProductList
-            category="Fruits and Vegetables"
-            products={products}
-            add={addItemHandler}
-            remove={removeItemHandler}
+          <Home
+            categorisedProducts={products}
+            addItemHandler={addItemHandler}
+            removeItemHandler={removeItemHandler}
           />
         </Route>
-        <Route path="/cart">
+        {/* <Route path="/cart">
           <Cart
             cartItemsCount={cartItemsCount}
             products={products}
@@ -106,7 +126,7 @@ const App = () => {
         </Route>
         <Route path="/allOrders">
           <AllOrders allOrders={allOrders} />
-        </Route>
+        </Route> */}
 
       </Switch>
 

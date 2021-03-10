@@ -13,17 +13,17 @@ const Home = ({ categorisedProducts, addItemHandler, removeItemHandler }) => Obj
       remove={removeItemHandler}
     />
   ));
-const productsShape = {
+const productsShape = PropTypes.shape({
   id: PropTypes.number.isRequired,
   name: PropTypes.string.isRequired,
   price: PropTypes.number.isRequired,
   itemCount: PropTypes.number.isRequired,
   count: PropTypes.number.isRequired,
   category: PropTypes.string.isRequired,
-};
+});
 Home.propTypes = {
   addItemHandler: PropTypes.func.isRequired,
   removeItemHandler: PropTypes.func.isRequired,
-  categorisedProducts: PropTypes.shape(PropTypes.arrayOf(productsShape)).isRequired,
+  categorisedProducts: PropTypes.objectOf(PropTypes.arrayOf(productsShape)).isRequired,
 };
 export default Home;
