@@ -22,7 +22,9 @@ const AllOrders = ({ allOrders }) => {
         {allOrders.length}
         {' Items)'}
       </div>
-      {orders}
+      <div className="all-orders-items-table">
+        {orders}
+      </div>
     </>
   );
 };

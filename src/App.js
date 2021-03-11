@@ -148,7 +148,7 @@ const App = () => {
     return <div>Your data is loading!</div>;
   }
   if (error) {
-    return <div>{error}</div>;
+    return <div>{error.message}</div>;
   }
   return (
     <div>

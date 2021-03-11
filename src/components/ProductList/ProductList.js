@@ -43,17 +43,6 @@ const ProductList = ({
     </div>
   );
 };
-// const productsShape = {
-//   id: PropTypes.number.isRequired,
-//   imgAlt: PropTypes.string.isRequired,
-//   imgSrc: PropTypes.string.isRequired,
-//   companyName: PropTypes.string.isRequired,
-//   itemName: PropTypes.string.isRequired,
-//   unitPrice: PropTypes.number.isRequired,
-//   unitQuantity: PropTypes.string.isRequired,
-//   itemCount: PropTypes.number.isRequired,
-//   category: PropTypes.string.isRequired,
-// };
 const productsShape = {
   id: PropTypes.number.isRequired,
   name: PropTypes.string.isRequired,

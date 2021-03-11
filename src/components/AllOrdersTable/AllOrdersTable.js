@@ -8,7 +8,7 @@ const AllOrdersTable = ({
 }) => {
   const formattedDate = new Date(date).toDateString();
   return (
-    <div className="orders-table">
+    <div className="orders-table" data-testid="orders-table-test">
       <table className="all-orders-table">
         <thead>
           <tr>

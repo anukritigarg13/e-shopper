@@ -14,6 +14,7 @@ describe('Product component', () => {
       itemCount: 3,
       unitQuantity: '1 Kg',
       unitPrice: 40,
+      stock: 50,
       add: jest.fn(),
       remove: jest.fn(),
     };
@@ -39,5 +40,9 @@ describe('Product component', () => {
   it('should display unit price', () => {
     render(<Product {...mockProps} />);
     screen.getByText('MRP 40/-');
+  });
+  it('should match snapshot', () => {
+    const { container } = render(<Product {...mockProps} />);
+    expect(container).toMatchSnapshot();
   });
 });

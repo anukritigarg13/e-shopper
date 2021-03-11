@@ -5,3 +5,6 @@
 .order-desc-table thead{
     background-color: rgb(27, 140, 160);
 }
+.all-orders-items-table{
+    overflow-x: scroll;
+}

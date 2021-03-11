@@ -1,0 +1,143 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ProdcutList component should match snapshot 1`] = `
+<div>
+  <div
+    class="product-container"
+  >
+    <div
+      class="product-type"
+    >
+      Fruits
+    </div>
+    <div
+      class="product-list"
+    >
+      <div
+        class="product"
+        data-testid="product-test"
+      >
+        <div
+          class="product-image-div"
+        >
+          <img
+            alt="image of grapes"
+            class="product-image"
+            data-testid="product-img"
+            src="assets/images/grapes.jpeg"
+          />
+        </div>
+        <p>
+          Fresco
+        </p>
+        <p>
+          MOCK_ITEM_NAME_1
+        </p>
+        <p>
+          1 kg
+        </p>
+        <div
+          class="quantity-placard"
+        >
+          <p>
+            MRP
+             
+            40
+            /-
+          </p>
+          <div
+            class="quantity-control"
+            data-testid="quantity-control"
+          >
+            <p>
+              <button
+                class="control-button"
+                type="button"
+              >
+                +
+              </button>
+            </p>
+            <p
+              class="quantity-in-basket"
+            >
+              3
+               
+              in Basket
+            </p>
+            <p>
+              <button
+                class="control-button"
+                type="button"
+              >
+                -
+              </button>
+            </p>
+          </div>
+        </div>
+      </div>
+      <div
+        class="product"
+        data-testid="product-test"
+      >
+        <div
+          class="product-image-div"
+        >
+          <img
+            alt="image of grapes"
+            class="product-image"
+            data-testid="product-img"
+            src="assets/images/grapes.jpeg"
+          />
+        </div>
+        <p>
+          Fresco
+        </p>
+        <p>
+          MOCK_ITEM_NAME_2
+        </p>
+        <p>
+          1 kg
+        </p>
+        <div
+          class="quantity-placard"
+        >
+          <p>
+            MRP
+             
+            40
+            /-
+          </p>
+          <div
+            class="quantity-control"
+            data-testid="quantity-control"
+          >
+            <p>
+              <button
+                class="control-button"
+                type="button"
+              >
+                +
+              </button>
+            </p>
+            <p
+              class="quantity-in-basket"
+            >
+              3
+               
+              in Basket
+            </p>
+            <p>
+              <button
+                class="control-button"
+                type="button"
+              >
+                -
+              </button>
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
