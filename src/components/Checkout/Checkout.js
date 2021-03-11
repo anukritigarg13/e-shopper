@@ -4,7 +4,7 @@ import validator from 'validator';
 import PropTypes from 'prop-types';
 import axios from 'axios';
 
-const Checkout = ({ products }) => {
+const Checkout = ({ products, updateAllOrders, cartItemsCount }) => {
   const [name, setName] = useState('');
   const [contactNo, setContactNo] = useState(undefined);
   const [email, setEmail] = useState('');
@@ -40,6 +40,11 @@ const Checkout = ({ products }) => {
       setSuccessMessage(undefined);
       return;
     }
+    if (cartItemsCount === 0) {
+      setErrorMessage('Please add items to your cart');
+      setSuccessMessage(undefined);
+      return;
+    }
     const orderedProducts = Object.keys(products).reduce((accumulator, productCategory) => {
       const productsInCart = products[productCategory]
         .filter((product) => product.itemCount > 0).reduce((acc, product) => {
@@ -54,7 +59,8 @@ const Checkout = ({ products }) => {
       accumulator.items = accumulator.items.concat(productsInCart);
       return accumulator;
     }, {});
-    await axios.post('/orders', orderedProducts);
+    const response = await axios.post('/orders', orderedProducts);
+    updateAllOrders(response.data);
     setSuccessMessage('Thankyou for shopping with us!');
     setErrorMessage(undefined);
   };
@@ -93,11 +99,12 @@ const productsShape = PropTypes.shape({
   id: PropTypes.number.isRequired,
   name: PropTypes.string.isRequired,
   price: PropTypes.number.isRequired,
-  itemCount: PropTypes.number.isRequired,
   count: PropTypes.number.isRequired,
   category: PropTypes.string.isRequired,
 });
 Checkout.propTypes = {
   products: PropTypes.objectOf(PropTypes.arrayOf(productsShape)).isRequired,
+  updateAllOrders: PropTypes.func.isRequired,
+  cartItemsCount: PropTypes.number.isRequired,
 };
 export default Checkout;

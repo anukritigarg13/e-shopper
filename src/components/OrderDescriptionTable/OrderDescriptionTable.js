@@ -17,7 +17,7 @@ const OrderDescTable = ({ products }) => {
   });
   const itemsInCart = categoriesInCart.map((productCategory) => {
     const categoryItemsInCart = products[productCategory].map((product) => (
-      <tr>
+      <tr key={product.id}>
         <td>{product.name}</td>
         <td>{product.price}</td>
         <td>{product.itemCount ? product.itemCount : product.count}</td>
@@ -29,10 +29,10 @@ const OrderDescTable = ({ products }) => {
       </tr>
     ));
     return (
-      <>
+      <React.Fragment key={productCategory}>
         <tr><td className="category-row" colSpan="4">{productCategory}</td></tr>
         {categoryItemsInCart}
-      </>
+      </React.Fragment>
     );
   });
   return (
@@ -56,7 +56,7 @@ const productsShape = PropTypes.shape({
   id: PropTypes.number.isRequired,
   name: PropTypes.string.isRequired,
   price: PropTypes.number.isRequired,
-  itemCount: PropTypes.number.isRequired,
+  // itemCount: PropTypes.number.isRequired,
   count: PropTypes.number.isRequired,
   category: PropTypes.string.isRequired,
 });

@@ -73,7 +73,27 @@ const App = () => {
       setError(e);
     }
   }, []);
-
+  const updateAllOrders = (order) => {
+    const categorisedOrderItems = order.data.items.reduce((acc, product) => {
+      if (acc[product.category] === undefined) {
+        acc[product.category] = [];
+      }
+      const newProduct = { ...product };
+      acc[product.category].push(newProduct);
+      return acc;
+    }, {});
+    const totalCost = order.data.items
+      .reduce((acc, product) => acc + product.count * product.price, 0);
+    const categorisedOrder = {};
+    categorisedOrder.items = categorisedOrderItems;
+    categorisedOrder.date = order.data.date;
+    categorisedOrder.id = order.data.id;
+    categorisedOrder.totalCost = totalCost;
+    categorisedOrder.totalItems = order.data.items.length;
+    const updatedAllOrders = [...allOrders];
+    updatedAllOrders.push(categorisedOrder);
+    setOrders(updatedAllOrders);
+  };
   const removeItemHandler = (id, category) => {
     const newCategoryProducts = products[category].map((product) => {
       if (product.id === id) {
@@ -151,7 +171,11 @@ const App = () => {
           />
         </Route>
         <Route path="/checkout">
-          <Checkout products={products} />
+          <Checkout
+            products={products}
+            updateAllOrders={updateAllOrders}
+            cartItemsCount={cartItemsCount}
+          />
         </Route>
         <Route path="/allOrders">
           <AllOrders allOrders={allOrders} />
