@@ -18,7 +18,6 @@ const Cart = (props) => {
       const newAcc = { ...acc, [category]: filteredProductsInCategory };
       return newAcc;
     }, {});
-  console.log(existingProducts);
   if (cartItemsCount === 0) {
     return <div className="cart-item-heading"><h1>Your cart is empty</h1></div>;
   }

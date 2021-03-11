@@ -54,9 +54,7 @@ const Checkout = ({ products }) => {
       accumulator.items = accumulator.items.concat(productsInCart);
       return accumulator;
     }, {});
-    console.log(orderedProducts);
-    const response = await axios.post('/orders', orderedProducts);
-    console.log(response);
+    await axios.post('/orders', orderedProducts);
     setSuccessMessage('Thankyou for shopping with us!');
     setErrorMessage(undefined);
   };

@@ -3,7 +3,6 @@ import PropTypes from 'prop-types';
 import './OrderDescriptionTable.css';
 
 const OrderDescTable = ({ products }) => {
-  console.log(products);
   const categoriesInCart = Object.keys(products).filter((category) => {
     const categoryExistInCart = products[category].find((product) => {
       if (!product.itemCount) {
@@ -36,7 +35,6 @@ const OrderDescTable = ({ products }) => {
       </>
     );
   });
-  console.log('Hello', itemsInCart);
   return (
     <table>
       <thead>

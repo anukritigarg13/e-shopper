@@ -7,7 +7,6 @@ const AllOrdersTable = ({
   id, order, date, totalCost, totalItems,
 }) => {
   const formattedDate = new Date(date).toDateString();
-  console.log(formattedDate);
   return (
     <div className="orders-table">
       <table className="all-orders-table">

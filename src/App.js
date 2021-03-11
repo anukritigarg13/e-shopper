@@ -19,9 +19,9 @@ const App = () => {
 
   useEffect(async () => {
     try {
-      const { data, axiosError } = await axios.get('/items');
-      if (data) {
-        const categorisedProducts = data.data.reduce((acc, product) => {
+      const { data: items, axiosError } = await axios.get('/items');
+      if (items) {
+        const categorisedProducts = items.data.reduce((acc, product) => {
           if (acc[product.category] === undefined) {
             acc[product.category] = [];
           }
@@ -44,9 +44,9 @@ const App = () => {
 
   useEffect(async () => {
     try {
-      const { data, axiosError } = await axios.get('/orders');
-      if (data) {
-        const categorisedOrders = data.data.reduce((accumulator, order) => {
+      const { data: orders, axiosError } = await axios.get('/orders');
+      if (orders) {
+        const categorisedOrders = orders.data.reduce((accumulator, order) => {
           const categorisedOrderItems = order.items.reduce((acc, product) => {
             if (acc[product.category] === undefined) {
               acc[product.category] = [];
