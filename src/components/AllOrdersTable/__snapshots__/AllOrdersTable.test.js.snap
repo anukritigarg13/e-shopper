@@ -1,0 +1,95 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`AllOrdersTable component should match snapshot 1`] = `
+<div>
+  <div
+    class="orders-table"
+    data-testid="orders-table-test"
+  >
+    <table
+      class="all-orders-table"
+    >
+      <thead>
+        <tr>
+          <th>
+            ORDER
+          </th>
+          <th>
+            ITEMS
+          </th>
+          <th>
+            DATE
+          </th>
+          <th>
+            AMOUNT
+          </th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>
+            1
+          </td>
+          <td>
+            1
+          </td>
+          <td>
+            Thu Mar 11 2021
+          </td>
+          <td>
+            340
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <div
+      class="order-desc-table"
+    >
+      <table
+        data-testid="order-desc-table"
+      >
+        <thead>
+          <tr>
+            <th>
+              ITEM DESCRIPTION
+            </th>
+            <th>
+              UNIT PRICE
+            </th>
+            <th>
+              QUANTITY
+            </th>
+            <th>
+              SUBTOTAL
+            </th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td
+              class="category-row"
+              colspan="4"
+            >
+              Fruits
+            </td>
+          </tr>
+          <tr>
+            <td>
+              MOCK
+            </td>
+            <td>
+              40
+            </td>
+            <td>
+              5
+            </td>
+            <td>
+              200
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+`;

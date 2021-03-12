@@ -1,0 +1,17 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Button component should match snapshot 1`] = `
+<div>
+  <div>
+    <a
+      href="/mock"
+    >
+      <button
+        type="button"
+      >
+        Mock button
+      </button>
+    </a>
+  </div>
+</div>
+`;

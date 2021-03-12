@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`ProdcutList component should match snapshot 1`] = `
+exports[`Home component should should match the snapshot 1`] = `
 <div>
   <div
     class="product-container"
@@ -9,7 +9,7 @@ exports[`ProdcutList component should match snapshot 1`] = `
     <div
       class="product-type"
     >
-      Fruits
+      MOCK CATEGORY 1
     </div>
     <div
       class="product-list"
@@ -32,7 +32,7 @@ exports[`ProdcutList component should match snapshot 1`] = `
           Fresco
         </p>
         <p>
-          MOCK_ITEM_NAME_1
+          MOCK 1
         </p>
         <p>
           1 kg
@@ -43,7 +43,7 @@ exports[`ProdcutList component should match snapshot 1`] = `
           <p>
             MRP
              
-            40
+            10
             /-
           </p>
           <div
@@ -61,7 +61,7 @@ exports[`ProdcutList component should match snapshot 1`] = `
             <p
               class="quantity-in-basket"
             >
-              3
+              2
                
               in Basket
             </p>
@@ -76,6 +76,20 @@ exports[`ProdcutList component should match snapshot 1`] = `
           </div>
         </div>
       </div>
+    </div>
+  </div>
+  <div
+    class="product-container"
+    data-testid="product-list"
+  >
+    <div
+      class="product-type"
+    >
+      MOCK CATEGORY 2
+    </div>
+    <div
+      class="product-list"
+    >
       <div
         class="product"
         data-testid="product-test"
@@ -94,7 +108,7 @@ exports[`ProdcutList component should match snapshot 1`] = `
           Fresco
         </p>
         <p>
-          MOCK_ITEM_NAME_2
+          MOCK 1
         </p>
         <p>
           1 kg
@@ -105,7 +119,7 @@ exports[`ProdcutList component should match snapshot 1`] = `
           <p>
             MRP
              
-            40
+            10
             /-
           </p>
           <div
@@ -123,7 +137,7 @@ exports[`ProdcutList component should match snapshot 1`] = `
             <p
               class="quantity-in-basket"
             >
-              3
+              2
                
               in Basket
             </p>

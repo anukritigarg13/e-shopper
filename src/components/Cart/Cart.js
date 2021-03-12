@@ -19,10 +19,10 @@ const Cart = (props) => {
       return newAcc;
     }, {});
   if (cartItemsCount === 0) {
-    return <div className="cart-item-heading"><h1>Your cart is empty</h1></div>;
+    return <div className="cart-item-heading" data-testid="cart"><h1>Your cart is empty</h1></div>;
   }
   return (
-    <div className="cart">
+    <div className="cart" data-testid="cart">
       <div className="cart-item-heading">
         Your basket
         {'('}

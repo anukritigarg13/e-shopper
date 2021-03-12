@@ -7,7 +7,7 @@ import NavContext from '../../theme';
 const Navigation = ({ cartItemsCount, toggleTheme }) => {
   const currentTheme = useContext(NavContext);
   return (
-    <div className={currentTheme === 'light' ? 'navigation' : 'navigation--dark-mode'}>
+    <div className={currentTheme === 'light' ? 'navigation' : 'navigation--dark-mode'} data-testid="navigation">
       <div><Link to="/" className={currentTheme === 'light' ? 'navigation-links' : 'navigation-links--dark-mode'}>E-Shopper</Link></div>
       <div>
         <button type="button" onClick={toggleTheme}> Change Theme</button>

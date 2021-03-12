@@ -1,13 +1,14 @@
 import React, { useState, useEffect } from 'react';
 import './App.css';
 import { Switch, Route } from 'react-router-dom';
-import axios from 'axios';
 import Navigation from './components/Navigation/Navigation';
 import Cart from './components/Cart/Cart';
 import Checkout from './components/Checkout/Checkout';
 import AllOrders from './components/AllOrders/AllOrders';
 import NavContext from './theme';
 import Home from './components/Home/Home';
+import { getAllItems, getAllOrders } from './utils/api';
+import groupByCategory from './utils/helper';
 
 const App = () => {
   const [products, setProducts] = useState({});
@@ -19,24 +20,9 @@ const App = () => {
 
   useEffect(async () => {
     try {
-      const { data: items, axiosError } = await axios.get('/items');
-      if (items) {
-        const categorisedProducts = items.data.reduce((acc, product) => {
-          if (acc[product.category] === undefined) {
-            acc[product.category] = [];
-          }
-          const newProduct = { ...product };
-          newProduct.itemCount = 0;
-          acc[product.category].push(newProduct);
-          return acc;
-        }, {});
-        setProducts(categorisedProducts);
-        setLoaded(true);
-      }
-      if (axiosError) {
-        setError(axiosError);
-        setLoaded(true);
-      }
+      const categorisedProducts = await getAllItems('/items');
+      setProducts(categorisedProducts);
+      setLoaded(true);
     } catch (e) {
       setError(e);
     }
@@ -44,44 +30,16 @@ const App = () => {
 
   useEffect(async () => {
     try {
-      const { data: orders, axiosError } = await axios.get('/orders');
-      if (orders) {
-        const categorisedOrders = orders.data.reduce((accumulator, order) => {
-          const categorisedOrderItems = order.items.reduce((acc, product) => {
-            if (acc[product.category] === undefined) {
-              acc[product.category] = [];
-            }
-            const newProduct = { ...product };
-            acc[product.category].push(newProduct);
-            return acc;
-          }, {});
-          const totalCost = order.items
-            .reduce((acc, product) => acc + product.count * product.price, 0);
-          const newOrder = {
-            ...order, items: categorisedOrderItems, totalItems: order.items.length, totalCost,
-          };
-          return accumulator.concat(newOrder);
-        }, []);
-        setOrders(categorisedOrders);
-        setLoaded(true);
-      }
-      if (axiosError) {
-        setError(axiosError);
-        setLoaded(true);
-      }
+      const categorisedOrders = await getAllOrders('./orders');
+      setOrders(categorisedOrders);
+      setLoaded(true);
     } catch (e) {
       setError(e);
     }
   }, []);
+
   const updateAllOrders = (order) => {
-    const categorisedOrderItems = order.data.items.reduce((acc, product) => {
-      if (acc[product.category] === undefined) {
-        acc[product.category] = [];
-      }
-      const newProduct = { ...product };
-      acc[product.category].push(newProduct);
-      return acc;
-    }, {});
+    const categorisedOrderItems = groupByCategory(order.data.items);
     const totalCost = order.data.items
       .reduce((acc, product) => acc + product.count * product.price, 0);
     const categorisedOrder = {};

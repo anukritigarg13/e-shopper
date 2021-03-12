@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import './Checkout.scss';
 import validator from 'validator';
 import PropTypes from 'prop-types';
-import axios from 'axios';
+import { postOrder } from '../../utils/api';
 
 const Checkout = ({ products, updateAllOrders, cartItemsCount }) => {
   const [name, setName] = useState('');
@@ -45,21 +45,7 @@ const Checkout = ({ products, updateAllOrders, cartItemsCount }) => {
       setSuccessMessage(undefined);
       return;
     }
-    const orderedProducts = Object.keys(products).reduce((accumulator, productCategory) => {
-      const productsInCart = products[productCategory]
-        .filter((product) => product.itemCount > 0).reduce((acc, product) => {
-          const newCount = product.itemCount;
-          const newProduct = { ...product, count: newCount };
-          delete newProduct.itemCount;
-          return acc.concat(newProduct);
-        }, []);
-      if (accumulator.items === undefined) {
-        accumulator.items = [];
-      }
-      accumulator.items = accumulator.items.concat(productsInCart);
-      return accumulator;
-    }, {});
-    const response = await axios.post('/orders', orderedProducts);
+    const response = await postOrder('/orders', products);
     updateAllOrders(response.data);
     setSuccessMessage('Thankyou for shopping with us!');
     setErrorMessage(undefined);

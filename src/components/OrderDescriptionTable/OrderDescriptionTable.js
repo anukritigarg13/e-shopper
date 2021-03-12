@@ -36,7 +36,7 @@ const OrderDescTable = ({ products }) => {
     );
   });
   return (
-    <table>
+    <table data-testid="order-desc-table">
       <thead>
         <tr>
           <th>ITEM DESCRIPTION</th>

@@ -3,181 +3,141 @@
 exports[`AllOrders component should match snapshot 1`] = `
 <div>
   <div
-    class="orders-item-heading"
-  >
-    All Orders
-    (
-    2
-     Items)
-  </div>
-  <div
-    class="all-orders-items-table"
+    data-testid="all-orders"
   >
     <div
-      class="orders-table"
-      data-testid="orders-table-test"
+      class="orders-item-heading"
     >
-      <table
-        class="all-orders-table"
-      >
-        <thead>
-          <tr>
-            <th>
-              ORDER
-            </th>
-            <th>
-              ITEMS
-            </th>
-            <th>
-              DATE
-            </th>
-            <th>
-              AMOUNT
-            </th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td>
-              1
-            </td>
-            <td>
-              1
-            </td>
-            <td>
-              Thu Mar 11 2021
-            </td>
-            <td>
-              340
-            </td>
-          </tr>
-        </tbody>
-      </table>
-      <div
-        class="order-desc-table"
-      >
-        <table>
-          <thead>
-            <tr>
-              <th>
-                ITEM DESCRIPTION
-              </th>
-              <th>
-                UNIT PRICE
-              </th>
-              <th>
-                QUANTITY
-              </th>
-              <th>
-                SUBTOTAL
-              </th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td
-                class="category-row"
-                colspan="4"
-              >
-                Fruits
-              </td>
-            </tr>
-            <tr>
-              <td>
-                MOCK
-              </td>
-              <td>
-                40
-              </td>
-              <td>
-                5
-              </td>
-              <td>
-                200
-              </td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
+      All Orders
+      (
+      2
+       Items)
     </div>
     <div
-      class="orders-table"
-      data-testid="orders-table-test"
+      class="all-orders-items-table"
     >
-      <table
-        class="all-orders-table"
-      >
-        <thead>
-          <tr>
-            <th>
-              ORDER
-            </th>
-            <th>
-              ITEMS
-            </th>
-            <th>
-              DATE
-            </th>
-            <th>
-              AMOUNT
-            </th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td>
-              2
-            </td>
-            <td>
-              1
-            </td>
-            <td>
-              Thu Mar 11 2021
-            </td>
-            <td>
-              200
-            </td>
-          </tr>
-        </tbody>
-      </table>
       <div
-        class="order-desc-table"
+        class="orders-table"
+        data-testid="orders-table-test"
       >
-        <table>
+        <table
+          class="all-orders-table"
+        >
           <thead>
             <tr>
               <th>
-                ITEM DESCRIPTION
+                ORDER
               </th>
               <th>
-                UNIT PRICE
+                ITEMS
               </th>
               <th>
-                QUANTITY
+                DATE
               </th>
               <th>
-                SUBTOTAL
+                AMOUNT
               </th>
             </tr>
           </thead>
           <tbody>
             <tr>
-              <td
-                class="category-row"
-                colspan="4"
-              >
-                Fruits
+              <td>
+                1
+              </td>
+              <td>
+                1
+              </td>
+              <td>
+                Thu Mar 11 2021
+              </td>
+              <td>
+                340
               </td>
             </tr>
+          </tbody>
+        </table>
+        <div
+          class="order-desc-table"
+        >
+          <table
+            data-testid="order-desc-table"
+          >
+            <thead>
+              <tr>
+                <th>
+                  ITEM DESCRIPTION
+                </th>
+                <th>
+                  UNIT PRICE
+                </th>
+                <th>
+                  QUANTITY
+                </th>
+                <th>
+                  SUBTOTAL
+                </th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td
+                  class="category-row"
+                  colspan="4"
+                >
+                  Fruits
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  MOCK
+                </td>
+                <td>
+                  40
+                </td>
+                <td>
+                  5
+                </td>
+                <td>
+                  200
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+      <div
+        class="orders-table"
+        data-testid="orders-table-test"
+      >
+        <table
+          class="all-orders-table"
+        >
+          <thead>
+            <tr>
+              <th>
+                ORDER
+              </th>
+              <th>
+                ITEMS
+              </th>
+              <th>
+                DATE
+              </th>
+              <th>
+                AMOUNT
+              </th>
+            </tr>
+          </thead>
+          <tbody>
             <tr>
               <td>
-                MOCK
+                2
               </td>
               <td>
-                40
+                1
               </td>
               <td>
-                5
+                Thu Mar 11 2021
               </td>
               <td>
                 200
@@ -185,6 +145,54 @@ exports[`AllOrders component should match snapshot 1`] = `
             </tr>
           </tbody>
         </table>
+        <div
+          class="order-desc-table"
+        >
+          <table
+            data-testid="order-desc-table"
+          >
+            <thead>
+              <tr>
+                <th>
+                  ITEM DESCRIPTION
+                </th>
+                <th>
+                  UNIT PRICE
+                </th>
+                <th>
+                  QUANTITY
+                </th>
+                <th>
+                  SUBTOTAL
+                </th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td
+                  class="category-row"
+                  colspan="4"
+                >
+                  Fruits
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  MOCK
+                </td>
+                <td>
+                  40
+                </td>
+                <td>
+                  5
+                </td>
+                <td>
+                  200
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
       </div>
     </div>
   </div>

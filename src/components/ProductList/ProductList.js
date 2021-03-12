@@ -7,18 +7,6 @@ const ProductList = ({
   products, add, remove, category,
 }) => {
   const requiredProducts = products.map((product) => (
-    // <Product
-    //   key={product.id}
-    //   itemName={product.itemName}
-    //   imgSrc={product.imgSrc}
-    //   imgAlt={product.imgAlt}
-    //   companyName={product.companyName}
-    //   unitPrice={product.unitPrice}
-    //   unitQuantity={product.unitQuantity}
-    //   itemCount={product.itemCount}
-    //   add={() => add(product.id)}
-    //   remove={() => remove(product.id)}
-    // />
     <Product
       key={product.id}
       itemName={product.name}
@@ -35,7 +23,7 @@ const ProductList = ({
     />
   ));
   return (
-    <div className="product-container">
+    <div className="product-container" data-testid="product-list">
       <div className="product-type">{category}</div>
       <div className="product-list">
         {requiredProducts}

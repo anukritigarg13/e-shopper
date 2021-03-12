@@ -15,7 +15,7 @@ const AllOrders = ({ allOrders }) => {
     />
   ));
   return (
-    <>
+    <div data-testid="all-orders">
       <div className="orders-item-heading">
         All Orders
         {'('}
@@ -25,7 +25,7 @@ const AllOrders = ({ allOrders }) => {
       <div className="all-orders-items-table">
         {orders}
       </div>
-    </>
+    </div>
   );
 };
 const productsShape = PropTypes.shape({
