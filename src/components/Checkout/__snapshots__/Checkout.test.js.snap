@@ -1,0 +1,51 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Checkout Component should match the snapshot 1`] = `
+<div>
+  <div
+    class="checkout"
+  >
+    <div
+      class="form"
+    >
+      <form
+        data-testid="form"
+      >
+        Name
+        <input
+          type="text"
+          value=""
+        />
+        Address
+        <input
+          type="text"
+          value=""
+        />
+        Contact Number
+        <input
+          type="number"
+          value=""
+        />
+        E-mail
+        <input
+          type="text"
+          value=""
+        />
+      </form>
+    </div>
+    <div>
+      <button
+        type="button"
+      >
+        Submit
+      </button>
+    </div>
+    <div
+      class="checkout-message"
+    >
+      <h2 />
+    </div>
+    <div />
+  </div>
+</div>
+`;

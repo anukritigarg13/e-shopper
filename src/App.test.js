@@ -62,12 +62,12 @@ describe('App component', () => {
     fireEvent.click(cartElement);
     screen.getAllByTestId('cart');
   });
-  it('should increment cart count by 1 when + button clicked', async () => {
-    await waitFor(() => render(<BrowserRouter><App /></BrowserRouter>));
-    const cartElement = screen.getAllByText('+');
-    // console.log(cartElement[0]);
-    // screen.logTestingPlaygroundURL();
-    act(() => { fireEvent.click(cartElement[0]); });
-    screen.getByText('My Basket :1');
-  });
+  // it('should increment cart count by 1 when + button clicked', async () => {
+  //   await waitFor(() => render(<BrowserRouter><App /></BrowserRouter>));
+  //   const cartElement = screen.getAllByText('+');
+  //   // console.log(cartElement[0]);
+  //   // screen.logTestingPlaygroundURL();
+  //   act(() => { fireEvent.click(cartElement[0]); });
+  //   screen.getByText('My Basket :1');
+  // });
 });

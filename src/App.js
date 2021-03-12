@@ -5,7 +5,7 @@ import Navigation from './components/Navigation/Navigation';
 import Cart from './components/Cart/Cart';
 import Checkout from './components/Checkout/Checkout';
 import AllOrders from './components/AllOrders/AllOrders';
-import NavContext from './theme';
+import NavContext from './components/styles/theme';
 import Home from './components/Home/Home';
 import { getAllItems, getAllOrders } from './utils/api';
 import groupByCategory from './utils/helper';

@@ -57,7 +57,7 @@ const Checkout = ({ products, updateAllOrders, cartItemsCount }) => {
 
     <div className="checkout">
       <div className="form">
-        <form>
+        <form data-testid="form">
           Name
           <input type="text" onChange={(event) => onChangeHandler(event, 'name')} value={name} />
           Address

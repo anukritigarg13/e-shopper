@@ -2,7 +2,7 @@ import React, { useContext } from 'react';
 import PropTypes from 'prop-types';
 import './Navigation.scss';
 import { Link } from 'react-router-dom';
-import NavContext from '../../theme';
+import NavContext from '../styles/theme';
 
 const Navigation = ({ cartItemsCount, toggleTheme }) => {
   const currentTheme = useContext(NavContext);
