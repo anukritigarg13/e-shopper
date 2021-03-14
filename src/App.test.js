@@ -18,9 +18,7 @@ describe('App component', () => {
   });
   beforeEach(() => {
     getAllOrders.mockResolvedValue(categorisedOrders);
-    getAllOrders.mockClear();
     getAllItems.mockResolvedValue(categorisedProducts);
-    getAllItems.mockClear();
   });
   it('should match snapshot', async () => {
     const { container } = await waitFor(() => render(<BrowserRouter><App /></BrowserRouter>));
@@ -43,6 +41,12 @@ describe('App component', () => {
     await waitFor(() => render(<BrowserRouter><App /></BrowserRouter>));
     expect(getAllOrders).toHaveBeenCalledTimes(1);
   });
+  it('should increment cart count by 1 when + button clicked', async () => {
+    await waitFor(() => render(<BrowserRouter><App /></BrowserRouter>));
+    const cartElement = screen.getAllByText('+');
+    act(() => { fireEvent.click(cartElement[0]); });
+    screen.getByText('My Basket :1');
+  });
   it('should render All Orders page when All Orders clicked', async () => {
     await waitFor(() => render(<BrowserRouter><App /></BrowserRouter>));
     const allOrdersElement = screen.getByText('All Orders');
@@ -62,12 +66,4 @@ describe('App component', () => {
     fireEvent.click(cartElement);
     screen.getAllByTestId('cart');
   });
-  // it('should increment cart count by 1 when + button clicked', async () => {
-  //   await waitFor(() => render(<BrowserRouter><App /></BrowserRouter>));
-  //   const cartElement = screen.getAllByText('+');
-  //   // console.log(cartElement[0]);
-  //   // screen.logTestingPlaygroundURL();
-  //   act(() => { fireEvent.click(cartElement[0]); });
-  //   screen.getByText('My Basket :1');
-  // });
 });
